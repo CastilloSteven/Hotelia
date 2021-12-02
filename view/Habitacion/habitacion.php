@@ -6,7 +6,7 @@ $ModeloEncargado= new Encargado();
 $ModeloEncargado->validateSession();
 $ModeloHabitacion=new Habitacion();
 $ModeloHotel=new Hotel();
-$ModeloHotel->getIdHotel($_SESSION['ID']);
+$ModeloHotel->getIdHotel($_SESSION['IDHOTEL']);
 
 ?>
 

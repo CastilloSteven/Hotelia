@@ -212,28 +212,28 @@ $(document).ready(function() {
 
 $(document).on("click", ".btnConsultar", function(){
     fila = $(this).closest("tr");
-    nameHotel = fila.find('td:eq(0)').text();
-    direHotel = fila.find('td:eq(1)').text();
-    descHab = fila.find('td:eq(2)').text();
-    fechaReserva = fila.find('td:eq(3)').text();
+    nameHotel = fila.find('td:eq(1)').text();
+    fechaReserva = fila.find('td:eq(2)').text();
+    descHab = fila.find('td:eq(3)').text();
     fechaIngreso = fila.find('td:eq(4)').text();
     fechaSalida = fila.find('td:eq(5)').text();
-    pago = parseInt(fila.find('td:eq(6)').text());
+    estado = fila.find('td:eq(6)').text();
+    pago = parseInt(fila.find('td:eq(7)').text());
 
     document.getElementById('nameHotel').readOnly = true;
-    document.getElementById('direHotel').readOnly = true;
-    document.getElementById('descHab').readOnly = true;
     document.getElementById('fechaRes').readOnly = true;
+    document.getElementById('descHab').readOnly = true;
     document.getElementById('fechaIngreso').readOnly = true;
     document.getElementById('fechaSalida').readOnly = true;
+    document.getElementById('estado').readOnly = true;
     document.getElementById('pago').readOnly = true;
     
     $("#nameHotel").val(nameHotel);
-    $("#direHotel").val(direHotel);
-    $("#descHab").val(descHab);
     $("#fechaRes").val(fechaReserva);
+    $("#descHab").val(descHab);
     $("#fechaIngreso").val(fechaIngreso);
     $("#fechaSalida").val(fechaSalida);
+    $("#estado").val(direHotel);
     $("#pago").val(pago);
 
     $(".modal-header").css("background-color", "blue");
@@ -246,9 +246,8 @@ var fila;
 
 $(document).on("click", ".btnEliminar", function(){    
     fila = $(this);
-    id = $(this).closest("tr").find('td:eq(0)').text();
-    opcion = 3
-    var respuesta = confirm("¿Está seguro de eliminar el registro: "+id+"?");
+    nameHotel = $(this).closest("tr").find('td:eq(1)').text();
+    var respuesta = confirm("¿Está seguro de eliminar el registro: "+nameHotel+"?");
     if(respuesta){
         $.ajax({
             url: "../../controller/reservaController.php?a=Delete",
@@ -277,7 +276,7 @@ $("#formReservas").submit(function(e){
         dataType: "json",
         data: {fechaReserva:fechaReserva, fechaIngreso:fechaIngreso, fechaSalida:fechaSalida, precio:precio, opcion:opcion},
         success: function(data){  
-            var datos = JSON.parse(data);
+            console.log(data);
             id = data[0].id;            
             fechaReserva = data[0].fechaReserva;
             fechaIngreso = data[0].fechaIngreso;

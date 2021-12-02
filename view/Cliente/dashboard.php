@@ -243,7 +243,6 @@ $model = new Reserva();
 								data-close-others="true">
 								<img alt="" class="img-circle " src="../../assets/images/panda.jpg" />
 								<span class="username username-hide-on-mobile"> <?php echo $dato['Nombres_Cliente']?></span>
-								
 								<i class="fa fa-angle-down"></i>
 							</a>
 							<ul class="dropdown-menu dropdown-menu-default animated jello">
@@ -459,7 +458,7 @@ $model = new Reserva();
 								<div class="card-body ">
 									<div class="table-wrap">
 										<div class="table-responsive">
-											<table class="table display product-overview mb-30" id="support_table5">
+											<table class="table display product-overview mb-30" id="example">
 												<thead>
 													<tr>
 														<th>No</th>
@@ -484,18 +483,23 @@ $model = new Reserva();
 														<td><?php echo $dato['Nombre_Hotel'] ?></td>
 														<td><?php echo $dato['FechaEntrada_Reserva'] ?></td>
 														<td><?php echo $dato['FechaSalida_Reserva'] ?></td>
-														<td>
-															<span class="label label-sm label-success">paid</span>
+														<td><?php $estado = $dato['Estado_Reserva'];
+															if($estado == "Activa"){
+															echo '<span class="label label-sm label-primary">Activa</span>';
+															} if ($estado == "Cumplida"){
+																echo '<span class="label label-sm label-success">Cumplida</span>';
+															} if ($estado == "Inactiva"){
+																echo '<span class="label label-sm label-danger">Cancelada</span>';
+															}
+														?>
+															
 														</td>
 														<td><?php echo $dato['Descripcion_Habitacion'] ?></td>
 														<td><?php echo "$".$dato['TotalApagar_Reserva'] ?></td>
 														<td>
-															<a href="edit_booking.html" class="btn btn-tbl-edit btn-xs">
+															<button class="btn btn-tbl-edit btn-xs btnConsultar">
 																<i class="fa fa-pencil"></i>
-															</a>
-															<button class="btn btn-tbl-delete btn-xs">
-																<i class="fa fa-trash-o "></i>
-															</button>
+														</button>
 														</td>
 													</tr>
 													<?php
@@ -511,6 +515,53 @@ $model = new Reserva();
 							</div>
 						</div>
 					</div>
+					<div class="modal fade" id="modalCRUD" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <form id="formReservas">    
+            <div class="modal-body">
+                <div class="form-group">
+                <label for="nameHotel" class="col-form-label">Nombre Hotel:</label>
+                <input type="text" class="form-control" id="nameHotel">
+                </div>
+                <div class="form-group">
+                <label for="direHotel" class="col-form-label">Direccion:</label>
+                <input type="text" class="form-control" id="direHotel">
+                </div>
+                <div class="form-group">
+                <label for="descHab" class="col-form-label">Habitacion:</label>
+                <input type="text" class="form-control" id="descHab">
+                </div>
+                <div class="form-group">
+                <label for="fechaRes" class="col-form-label">Fecha reserva:</label>
+                <input type="datetime" class="form-control" id="fechaRes"?>
+                </div>  
+                <div class="form-group">
+                <label for="fechaIngreso" class="col-form-label">Fecha Ingreso:</label>
+                <input type="date" class="form-control" id="fechaIngreso" min=<?php $hoy=date("Y-m-d"); echo $hoy;?>>
+                </div>                
+                <div class="form-group">
+                <label for="fechaSalida" class="col-form-label">Fecha salida:</label>
+                <input type="date" class="form-control" id="fechaSalida" min=<?php $hoy=date("Y-m-d"); echo $hoy;?>>
+                </div>       
+                <div class="form-group">
+                <label for="pago" class="col-form-label">Precio a pagar:</label>
+                <input type="number" class="form-control" id="pago">
+                </div>         
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" id="btnGuardar" class="btn btn-dark">Guardar</button>
+            </div>
+        </form>    
+        </div>
+    </div>
+</div>  
 					<!-- Chart end -->
 					<div class="row">
 						<div class="col-md-8 col-sm-12 col-12">					
@@ -738,6 +789,7 @@ $model = new Reserva();
 	<script src="../../assets/plugins/jquery-blockui/jquery.blockui.min.js"></script>
 	<script src="../../assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 	<script src="../../assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+	<script src="../../assets/js/consultarReservas.js"></script>
 	<!-- bootstrap -->
 	<script src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 	<script src="../../assets/plugins/sparkline/jquery.sparkline.min.js"></script>

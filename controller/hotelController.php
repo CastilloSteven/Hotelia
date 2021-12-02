@@ -21,26 +21,17 @@
         $NomHot=$_POST['NomHot'];
         $DirHot=$_POST['DirHot'];
         $DesHot=$_POST['DesHot'];
+        $ImaHot=$_POST['ImaHot'];
+        $EstHot=$_POST['EstHot'];
         $IdEnc=$_POST['IdEnc'];
 
-        $ModeloHotel->update($IdHot,$NomHot,$DirHot,$DesHot,$IdEnc);
+        $ModeloHotel->update($IdHot,$NomHot,$DirHot,$DesHot,$EstHot,$IdEnc);
     }
 
-    if ($accion == "EstadoA") {
-        $ModeloHotel=new Hotel();
-        $IdHot=$_POST['IdHot'];
-        $IdEnc=$_POST['IdEnc'];
-        
-        $ModeloHotel->ActHot($IdHot,$IdEnc);
+    if(isset($_POST['consulta'])){
+        $consulta->buscarHotel();
     }
-    
-    if ($accion == "EstadoC") {
-        $ModeloHotel=new Hotel();
-        $IdHot=$_POST['IdHot'];
-        $IdEnc=$_POST['IdEnc'];
-        
-        $ModeloHotel->DesActHot($IdHot,$IdEnc);
-    }
+
 
 
 

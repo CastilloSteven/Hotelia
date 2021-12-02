@@ -4,28 +4,26 @@ $('.datepicker').datepicker({
 });
 
 var availableTags = [
-	"Aceh",
-	"Medan",
-	"Padang",
-	"Palembang",
-	"Bengkulu",
-	"Lampung",
-	"Jakarta",
-	"Bandung",
-	"Yogyakarta",
-	"Solo",
-	"Semaarang",
-	"Surabaya",
-	"Madura",
-	"Timor Timur",
-	"Bali",
-	"Lombok",
-	"Pontianak",
-	"Flores",
-	"Balikpapan",
-	"Makasar",
-	"Maluku",
-	"Jayapura"
+	 "Antonio Nariño",
+	 "Barrios Unidos",
+	 "Bosa",
+	 "Chapinero",
+	 "Ciudad Bolívar",
+	 "Engativá",
+	 "Fontibón",
+	 "Kennedy",
+	 "La Candelaria",
+	 "Los Mártires",
+	 "Puente Aranda",
+	 "Rafael Uribe Uribe",
+	 "San Cristóbal",
+	 "Santa Fe",
+	 "Suba",
+	 "Sumapaz",
+	 "Teusaquillo",
+	 "Tunjuelito",
+	 "Usaquén",
+	 "Usme"
 ];
 $( ".autocomplete" ).autocomplete({
 	source: availableTags

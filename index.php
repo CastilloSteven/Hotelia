@@ -271,7 +271,7 @@ $hotel=$model->listarHot();
                 <div class="form-group row no-margin">
                     <div class="input col-sm-4">
                         <label>Destino :</label>
-                        <input type="text" class="icon-a icon-a-plane-down autocomplete" placeholder="Lugar destino"/>
+                        <input type="text" id="searchHot" class="icon-a icon-a-plane-down autocomplete" placeholder="Lugar destino"/>
                     </div>
                     <div class="input col-sm-2">
                         <label>Fecha :</label>
@@ -297,7 +297,7 @@ $hotel=$model->listarHot();
                         </div>
                         <div class="col-xs-4">
                             <input type="number" value="0"/>
-                            Animales
+                            Habitaciones
                         </div>
                     </div>
                     <div class="col-sm-2 submit no-padding text-center">
@@ -503,14 +503,12 @@ $hotel=$model->listarHot();
      
         <div class="col-xs-7 third-party">
             <strong>Comparar:</strong>
-            <a class="clearfix" href="#">
+            <a class="clearfix" href="https://www.booking.com/index.es.html">
                 <img src="assets/images/booking.jpg" alt="traveloka" />
-                <span class="btn btn-sm btn-danger">COP $155.000</span>
             </a>
 
-            <a class="clearfix" href="#">
+            <a class="clearfix" href="https://www.trivago.com.co/">
                 <img src="assets/images/trivago.png" alt="tiket" />
-                <span class="btn btn-sm btn-danger">COP $142.000</span>
             </a>
         </div>
     </div>
