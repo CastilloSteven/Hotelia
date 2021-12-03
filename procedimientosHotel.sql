@@ -41,9 +41,8 @@
     end //
     delimiter ;
     
-    call proUpdateEnc("1","steven andres","Castillo Barrera","3107853605","sacastillo889@misena.edu.co","clavesecreta");
+--    call proUpdateEnc("1","steven andres","Castillo Barrera","3107853605","sacastillo889@misena.edu.co","clavesecreta");
     
-    drop trigger ValidarcamposVacios;
 
 -- hotel **************************************************************************
 
@@ -85,7 +84,7 @@
     where Id_Hotel = IdHot and Id_Encargado = IdEnc;
     end //
     delimiter ;
-   call proInfoHotEsp (2,1);
+ --  call proInfoHotEsp (2,1);
    
 -- estado inactivo
 	delimiter //
@@ -97,8 +96,8 @@
     end //
     delimiter ;
     
-    call proCambioInactivoHot (2,1);
-    call proCambioActivoHot (2,1);
+   -- call proCambioInactivoHot (2,1);
+   -- call proCambioActivoHot (2,1);
     
     select * from hotel;
     
@@ -123,7 +122,6 @@
     end //
     delimiter ;
 	
- drop procedure proCambioFoto;
 -- habitacion **************************************************************************
 
 delimiter //
@@ -132,5 +130,4 @@ begin
 select * from habitacion
 where Id_Hotel = idHot;
 end //
-delimiter ;
-drop procedure proInfoHab;
+delimiter ; 

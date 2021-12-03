@@ -31,13 +31,14 @@ if($action=="Res"){
     $clave = $_GET['clave'];
     $telefono = $_GET['phone'];   
     $fechaActual = date('Y-m-d H:i:s');
-    $estadoReserva = 1;
+    $estadoReserva = 'Activa';
     $adultos = $_GET['adultos'];
     $niños = $_GET['niños'];
     $estadoHab = "Activa";
+    $idHab = $_GET['idHab'];
     $personas = $adultos+$niños;
 
-    $model->agregar($costo,$fechaI,$fechaS,$name,$apellido,$nacimiento,$telefono,$documento,$correo,$clave, $tipoDocumento,$fechaActual,$estadoReserva,$adultos,$niños,$personas,$nameHotel,$direHotel,$descHotel,$estadoHab,$numCamas,$descHab);
+    $model->agregar($idHab,$costo,$fechaI,$fechaS,$name,$apellido,$nacimiento,$telefono,$documento,$correo,$clave, $tipoDocumento,$fechaActual,$estadoReserva,$adultos,$niños,$personas,$nameHotel,$direHotel,$descHotel,$estadoHab,$numCamas,$descHab);
 
 }
 
@@ -52,14 +53,15 @@ if($action=="Res2"){
     $fechaI = $_GET['ingreso'];
     $fechaS = $_GET['salida'];   
     $fechaActual = date('Y-m-d H:i:s');
-    $estadoReserva = 1;
+    $estadoReserva = 'Activa';
     $adultos = $_GET['adultos'];
     $niños = $_GET['niños'];
     $estadoHab = "Activa";
     $id = $_SESSION['Id'];
+    $idHab = $_GET['idHab'];
     $personas = $adultos+$niños;
 
-    $model->agregar2($costo,$fechaI,$fechaS,$fechaActual,$estadoReserva,$adultos,$niños,$personas,$nameHotel,$direHotel,$descHotel,$estadoHab,$numCamas,$descHab,$id);
+    $model->agregar2($idHab,$costo,$fechaI,$fechaS,$fechaActual,$estadoReserva,$adultos,$niños,$personas,$nameHotel,$direHotel,$descHotel,$estadoHab,$numCamas,$descHab,$id);
 
 }
 

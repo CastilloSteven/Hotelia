@@ -1,5 +1,6 @@
 create database SIProyectoHoteles;
 use SIProyectoHoteles;
+drop database SIProyectoHoteles;
 
 create table TipoDocumento(
 Id_TipoDocumento int auto_increment primary key,

@@ -87,6 +87,7 @@ $model = new Cliente();
                             $pass = $_GET['clave'];
                             $adultos = $_GET['adultos'];
                             $niños = $_GET['niños'];
+                            $id = $_GET['id'];
                             ?>
         	<!-- InstanceBeginEditable name="yieldyu" -->
             <div class="container">
@@ -349,11 +350,11 @@ $model = new Cliente();
                             <?php
                             if($_SESSION!=null){ 
                             ?>
-                                <a href="../../controller/reservaController.php?a=Res2&nameHotel=<?php echo $nameHotel ?>&direccion=<?php echo $direHotel ?>&descripcion=<?php echo $descHotel ?>&descHab=<?php echo $descHab ?>&numCamas=<?php echo $numCamas ?>&costo=<?php echo $costo ?>&ingreso=<?php echo $fechaI ?>&salida=<?php echo $fechaS ?>&adultos=<?php echo $adultos ?>&niños=<?php echo $niños ?>&name=<?php echo $name ?>&lastname=<?php echo $lastname ?>&phone=<?php echo $tel ?>&birth=<?php echo $fechaNac ?>&tipoDoc=<?php echo $tipoDoc ?>&numDoc=<?php echo $numDoc ?>&email=<?php echo $email ?>&clave=<?php echo $pass ?>&id=<?php $_SESSION['Id'] ?>" class="btn btn-info btn-lg">Enviar</a>
+                                <a href="../../controller/reservaController.php?a=Res2&idHab=<?php echo $id ?>&nameHotel=<?php echo $nameHotel ?>&direccion=<?php echo $direHotel ?>&descripcion=<?php echo $descHotel ?>&descHab=<?php echo $descHab ?>&numCamas=<?php echo $numCamas ?>&costo=<?php echo $costo ?>&ingreso=<?php echo $fechaI ?>&salida=<?php echo $fechaS ?>&adultos=<?php echo $adultos ?>&niños=<?php echo $niños ?>&name=<?php echo $name ?>&lastname=<?php echo $lastname ?>&phone=<?php echo $tel ?>&birth=<?php echo $fechaNac ?>&tipoDoc=<?php echo $tipoDoc ?>&numDoc=<?php echo $numDoc ?>&email=<?php echo $email ?>&clave=<?php echo $pass ?>&id=<?php $_SESSION['Id'] ?>" class="btn btn-info btn-lg">Enviar</a>
                                 <?php
                             }else{
                                 ?>
-                            <a href="../../controller/reservaController.php?a=Res&nameHotel=<?php echo $nameHotel ?>&direccion=<?php echo $direHotel ?>&descripcion=<?php echo $descHotel ?>&descHab=<?php echo $descHab ?>&numCamas=<?php echo $numCamas ?>&costo=<?php echo $costo ?>&ingreso=<?php echo $fechaI ?>&salida=<?php echo $fechaS ?>&adultos=<?php echo $adultos ?>&niños=<?php echo $niños ?>&name=<?php echo $name ?>&lastname=<?php echo $lastname ?>&phone=<?php echo $tel ?>&birth=<?php echo $fechaNac ?>&tipoDoc=<?php echo $tipoDoc ?>&numDoc=<?php echo $numDoc ?>&email=<?php echo $email ?>&clave=<?php echo $pass ?>" class="btn btn-info btn-lg">Seguir</a>
+                            <a href="../../controller/reservaController.php?a=Res&idHab=<?php echo $id ?>&nameHotel=<?php echo $nameHotel ?>&direccion=<?php echo $direHotel ?>&descripcion=<?php echo $descHotel ?>&descHab=<?php echo $descHab ?>&numCamas=<?php echo $numCamas ?>&costo=<?php echo $costo ?>&ingreso=<?php echo $fechaI ?>&salida=<?php echo $fechaS ?>&adultos=<?php echo $adultos ?>&niños=<?php echo $niños ?>&name=<?php echo $name ?>&lastname=<?php echo $lastname ?>&phone=<?php echo $tel ?>&birth=<?php echo $fechaNac ?>&tipoDoc=<?php echo $tipoDoc ?>&numDoc=<?php echo $numDoc ?>&email=<?php echo $email ?>&clave=<?php echo $pass ?>" class="btn btn-info btn-lg">Seguir</a>
                             <?php
                             }
                             ?>

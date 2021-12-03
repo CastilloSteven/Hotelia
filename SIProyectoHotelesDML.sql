@@ -14,6 +14,7 @@ insert into Encargado (Nombres_Encargado,Apellidos_Encargado,FechaNac_Encargado,
 delete from encargado where Id_Encargado = 4;
 --
 use siproyectohoteles;
+select * from cliente;
 select * from encargado;
 select * from	hotel;
 select * from habitacion;

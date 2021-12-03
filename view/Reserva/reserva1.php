@@ -81,6 +81,7 @@ $cliente=$model->tipoDoc();
                             $fechaS = $_GET['salida'];
                             $adultos = $_GET['adultos'];
                             $niños = $_GET['niños'];
+                            $id = $_GET['id'];
                             ?>
         	<!-- InstanceBeginEditable name="yieldyu" -->
             <div class="container">
@@ -162,7 +163,7 @@ $cliente=$model->tipoDoc();
                             </div>
                                 <div class="btn-block bold clearfix">
                             <div class="pull-right m-t-20">
-                                <a class="btn btn-info" href="reserva2.php?nameHotel=<?php echo $nameHotel ?>&direccion=<?php echo $direHotel ?>&descripcion=<?php echo $descHotel ?>&descHab=<?php echo $descHab ?>&numCamas=<?php echo $numCamas ?>&costo=<?php echo $costo ?>&ingreso=<?php echo $fechaI ?>&salida=<?php echo $fechaS ?>&adultos=<?php echo $adultos ?>&niños=<?php echo $niños ?>&name=<?php echo $cli['Nombres_Cliente']?>&lastname=<?php echo $cli['Apellidos_Cliente']?>&phone=<?php echo $cli['Telefono_Cliente']?>&birth=<?php echo $cli['FechaNac_Cliente']?>&tipoDoc=<?php echo $cli['Tipo_Documento']?>&numDoc=<?php echo $cli['Numero_Documento_Cliente']?>&email=<?php echo $cli['Correo_Cliente']?>&clave=<?php echo $cli['Contraseña_Cliente']?>">Seguir <i class="glyphicon glyphicon-circle-arrow-right"></i></a>                           
+                                <a class="btn btn-info" href="reserva2.php?id=<?php echo $id ?>&nameHotel=<?php echo $nameHotel ?>&direccion=<?php echo $direHotel ?>&descripcion=<?php echo $descHotel ?>&descHab=<?php echo $descHab ?>&numCamas=<?php echo $numCamas ?>&costo=<?php echo $costo ?>&ingreso=<?php echo $fechaI ?>&salida=<?php echo $fechaS ?>&adultos=<?php echo $adultos ?>&niños=<?php echo $niños ?>&name=<?php echo $cli['Nombres_Cliente']?>&lastname=<?php echo $cli['Apellidos_Cliente']?>&phone=<?php echo $cli['Telefono_Cliente']?>&birth=<?php echo $cli['FechaNac_Cliente']?>&tipoDoc=<?php echo $cli['Tipo_Documento']?>&numDoc=<?php echo $cli['Numero_Documento_Cliente']?>&email=<?php echo $cli['Correo_Cliente']?>&clave=<?php echo $cli['Contraseña_Cliente']?>">Seguir <i class="glyphicon glyphicon-circle-arrow-right"></i></a>                           
                             </div>                      
                     </div>
                         </div>
@@ -174,7 +175,7 @@ $cliente=$model->tipoDoc();
                             	<li class="clearfix"><?php echo $descHab ?><span class="price">$ <strong><?php echo $costo; ?></strong></span></li>
                                 <li class="clearfix"><?php echo $direHotel; ?></span></li>
                                 <li class="clearfix"><?php echo $descHotel; ?>	</span></li>
-                                <li class="clearfix"><?php echo $numCamas?> <i class="fas fa-bed"></i> Camas</span></li>
+                                <li class="clearfix"><?php echo $numCamas; ?> <i class="fas fa-bed"></i> Camas</span></li>
                                 <li class="clearfix"><?php echo $adultos?> <i class="fas fa-male"></i> Adultos | <?php echo $niños?> <i class="fas fa-child"></i> Niños</span></li>
                                 <li class="clearfix"><?php echo $fechaI." | ".$fechaS?></span></li>
                                 <li class="separator"></li>
@@ -264,7 +265,7 @@ $cliente=$model->tipoDoc();
                        
                        <div class="btn-block bold clearfix">
                             <div class="pull-right m-t-20">
-                                <a class="btn btn-info" href="reserva2.php?nameHotel=<?php echo $nameHotel ?>&direccion=<?php echo $direHotel ?>&descripcion=<?php echo $descHotel ?>&descHab=<?php echo $descHab ?>&numCamas=<?php echo $numCamas ?>&costo=<?php echo $costo ?>&ingreso=<?php echo $fechaI ?>&salida=<?php echo $fechaS ?>&adultos=<?php echo $adultos ?>&niños=<?php echo $niños ?>&name=Daniel&lastname=Carrascal&phone=3224589623&birth=1991-08-16&tipoDoc=Cedula de Ciudadania&numDoc=458569632&email=danielc@gmail.com&clave=456852">Siguiente <i class="glyphicon glyphicon-circle-arrow-right"></i></a>                           
+                                <a class="btn btn-info" href="reserva2.php?id=<?php echo $id ?>&nameHotel=<?php echo $nameHotel ?>&direccion=<?php echo $direHotel ?>&descripcion=<?php echo $descHotel ?>&descHab=<?php echo $descHab ?>&numCamas=<?php echo $numCamas ?>&costo=<?php echo $costo ?>&ingreso=<?php echo $fechaI ?>&salida=<?php echo $fechaS ?>&adultos=<?php echo $adultos ?>&niños=<?php echo $niños ?>&name=Daniel&lastname=Carrascal&phone=3224589623&birth=1991-08-16&tipoDoc=Cedula de Ciudadania&numDoc=458569632&email=danielc@gmail.com&clave=456852">Siguiente <i class="glyphicon glyphicon-circle-arrow-right"></i></a>                           
                             </div>
                         
                         </div>
