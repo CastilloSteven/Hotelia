@@ -1,147 +1,295 @@
-/**
- *  Document   : table_data.js
- *  Author     : redstar
- *  Description: advance table page script
- *
- **/
-
 $(document).ready(function() {
-	'use strict';
-    $('#example1').DataTable( {
-        "scrollX": true
-    } );
-    
-    var table = $('#example2').DataTable( {
-        "scrollY": "200px",
-        "paging": false
-    } );
- 
-    $('a.toggle-vis').on( 'click', function (e) {
-        e.preventDefault();
- 
-        // Get the column API object
-        var column = table.column( $(this).attr('data-column') );
- 
-        // Toggle the visibility
-        column.visible( ! column.visible() );
-    } );
-    
-    var t = $('#example3').DataTable( {
-        "scrollX": true
-    } );
-    var counter = 1;
- 
-    $('#addRow').on( 'click', function () {
-        t.row.add( [
-            counter +'.1',
-            counter +'.2',
-            counter +'.3',
-            counter +'.4',
-            counter +'.5'
-        ] ).draw( false );
- 
-        counter++;
-    } );
- 
-    // Automatically add a first row of data
-    $('#addRow').click();
-    
-    $('#example4').DataTable( {
-        "scrollX": true
-    } );
-    
-    $('#saveStage').DataTable( {
-    	 "scrollX": true,
-        stateSave: true
-    } );
-    
-    var table = $('#tableGroup').DataTable({
-        "columnDefs": [
-            { "visible": false, "targets": 2 }
-        ],
-        "order": [[ 2, 'asc' ]],
-        "scrollX": true,
-        "displayLength": 25,
-        "drawCallback": function ( settings ) {
-            var api = this.api();
-            var rows = api.rows( {page:'current'} ).nodes();
-            var last=null;
- 
-            api.column(2, {page:'current'} ).data().each( function ( group, i ) {
-                if ( last !== group ) {
-                    $(rows).eq( i ).before(
-                        '<tr class="group"><td colspan="5">'+group+'</td></tr>'
-                    );
- 
-                    last = group;
-                }
-            } );
+    example = $('#example').DataTable({
+        "columnDefs":[{
+           "targets": -1,
+           "data": null,
+           "defaultContent": "<div class='text-center'><div class='btn-group'><button class='btn btn-primary btnConsultar'><i class='far fa-file'></i></button><button class='btn btn-danger btnEliminar' name='a' value='Delete'><i class='fas fa-toggle-on'></i></button></div></div>"
+        }],
+        "language":{
+                "processing": "Procesando...",
+                "lengthMenu": "Mostrar _MENU_ registros",
+                "zeroRecords": "No se encontraron resultados",
+                "emptyTable": "Ningún dato disponible en esta tabla",
+                "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "search": "Buscar:",
+                "infoThousands": ",",
+                "loadingRecords": "Cargando...",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Último",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                },
+                "aria": {
+                    "sortAscending": ": Activar para ordenar la columna de manera ascendente",
+                    "sortDescending": ": Activar para ordenar la columna de manera descendente"
+                },
+                "buttons": {
+                    "copy": "Copiar",
+                    "colvis": "Visibilidad",
+                    "collection": "Colección",
+                    "colvisRestore": "Restaurar visibilidad",
+                    "copyKeys": "Presione ctrl o u2318 + C para copiar los datos de la tabla al portapapeles del sistema. <br \/> <br \/> Para cancelar, haga clic en este mensaje o presione escape.",
+                    "copySuccess": {
+                        "1": "Copiada 1 fila al portapapeles",
+                        "_": "Copiadas %d fila al portapapeles"
+                    },
+                    "copyTitle": "Copiar al portapapeles",
+                    "csv": "CSV",
+                    "excel": "Excel",
+                    "pageLength": {
+                        "-1": "Mostrar todas las filas",
+                        "_": "Mostrar %d filas"
+                    },
+                    "pdf": "PDF",
+                    "print": "Imprimir"
+                },
+                "autoFill": {
+                    "cancel": "Cancelar",
+                    "fill": "Rellene todas las celdas con <i>%d<\/i>",
+                    "fillHorizontal": "Rellenar celdas horizontalmente",
+                    "fillVertical": "Rellenar celdas verticalmentemente"
+                },
+                "decimal": ",",
+                "searchBuilder": {
+                    "add": "Añadir condición",
+                    "button": {
+                        "0": "Constructor de búsqueda",
+                        "_": "Constructor de búsqueda (%d)"
+                    },
+                    "clearAll": "Borrar todo",
+                    "condition": "Condición",
+                    "conditions": {
+                        "date": {
+                            "after": "Despues",
+                            "before": "Antes",
+                            "between": "Entre",
+                            "empty": "Vacío",
+                            "equals": "Igual a",
+                            "notBetween": "No entre",
+                            "notEmpty": "No Vacio",
+                            "not": "Diferente de"
+                        },
+                        "number": {
+                            "between": "Entre",
+                            "empty": "Vacio",
+                            "equals": "Igual a",
+                            "gt": "Mayor a",
+                            "gte": "Mayor o igual a",
+                            "lt": "Menor que",
+                            "lte": "Menor o igual que",
+                            "notBetween": "No entre",
+                            "notEmpty": "No vacío",
+                            "not": "Diferente de"
+                        },
+                        "string": {
+                            "contains": "Contiene",
+                            "empty": "Vacío",
+                            "endsWith": "Termina en",
+                            "equals": "Igual a",
+                            "notEmpty": "No Vacio",
+                            "startsWith": "Empieza con",
+                            "not": "Diferente de"
+                        },
+                        "array": {
+                            "not": "Diferente de",
+                            "equals": "Igual",
+                            "empty": "Vacío",
+                            "contains": "Contiene",
+                            "notEmpty": "No Vacío",
+                            "without": "Sin"
+                        }
+                    },
+                    "data": "Data",
+                    "deleteTitle": "Eliminar regla de filtrado",
+                    "leftTitle": "Criterios anulados",
+                    "logicAnd": "Y",
+                    "logicOr": "O",
+                    "rightTitle": "Criterios de sangría",
+                    "title": {
+                        "0": "Constructor de búsqueda",
+                        "_": "Constructor de búsqueda (%d)"
+                    },
+                    "value": "Valor"
+                },
+                "searchPanes": {
+                    "clearMessage": "Borrar todo",
+                    "collapse": {
+                        "0": "Paneles de búsqueda",
+                        "_": "Paneles de búsqueda (%d)"
+                    },
+                    "count": "{total}",
+                    "countFiltered": "{shown} ({total})",
+                    "emptyPanes": "Sin paneles de búsqueda",
+                    "loadMessage": "Cargando paneles de búsqueda",
+                    "title": "Filtros Activos - %d"
+                },
+                "select": {
+                    "cells": {
+                        "1": "1 celda seleccionada",
+                        "_": "$d celdas seleccionadas"
+                    },
+                    "columns": {
+                        "1": "1 columna seleccionada",
+                        "_": "%d columnas seleccionadas"
+                    },
+                    "rows": {
+                        "1": "1 fila seleccionada",
+                        "_": "%d filas seleccionadas"
+                    }
+                },
+                "thousands": ".",
+                "datetime": {
+                    "previous": "Anterior",
+                    "next": "Proximo",
+                    "hours": "Horas",
+                    "minutes": "Minutos",
+                    "seconds": "Segundos",
+                    "unknown": "-",
+                    "amPm": [
+                        "AM",
+                        "PM"
+                    ],
+                    "months": {
+                        "0": "Enero",
+                        "1": "Febrero",
+                        "10": "Noviembre",
+                        "11": "Diciembre",
+                        "2": "Marzo",
+                        "3": "Abril",
+                        "4": "Mayo",
+                        "5": "Junio",
+                        "6": "Julio",
+                        "7": "Agosto",
+                        "8": "Septiembre",
+                        "9": "Octubre"
+                    },
+                    "weekdays": [
+                        "Dom",
+                        "Lun",
+                        "Mar",
+                        "Mie",
+                        "Jue",
+                        "Vie",
+                        "Sab"
+                    ]
+                },
+                "editor": {
+                    "close": "Cerrar",
+                    "create": {
+                        "button": "Nuevo",
+                        "title": "Crear Nuevo Registro",
+                        "submit": "Crear"
+                    },
+                    "edit": {
+                        "button": "Editar",
+                        "title": "Editar Registro",
+                        "submit": "Actualizar"
+                    },
+                    "remove": {
+                        "button": "Eliminar",
+                        "title": "Eliminar Registro",
+                        "submit": "Eliminar",
+                        "confirm": {
+                            "_": "¿Está seguro que desea eliminar %d filas?",
+                            "1": "¿Está seguro que desea eliminar 1 fila?"
+                        }
+                    },
+                    "error": {
+                        "system": "Ha ocurrido un error en el sistema (<a target=\"\\\" rel=\"\\ nofollow\" href=\"\\\">Más información&lt;\\\/a&gt;).<\/a>"
+                    },
+                    "multi": {
+                        "title": "Múltiples Valores",
+                        "info": "Los elementos seleccionados contienen diferentes valores para este registro. Para editar y establecer todos los elementos de este registro con el mismo valor, hacer click o tap aquí, de lo contrario conservarán sus valores individuales.",
+                        "restore": "Deshacer Cambios",
+                        "noMulti": "Este registro puede ser editado individualmente, pero no como parte de un grupo."
+                    }
+                },
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ registros"
         }
-    } );
- 
-    // Order by the grouping
-    $('#tableGroup tbody').on( 'click', 'tr.group', function () {
-        var currentOrder = table.order()[0];
-        if ( currentOrder[0] === 2 && currentOrder[1] === 'asc' ) {
-            table.order( [ 2, 'desc' ] ).draw();
-        }
-        else {
-            table.order( [ 2, 'asc' ] ).draw();
-        }
-    } );
+    });
+
+$(document).on("click", ".btnConsultar", function(){
+    fila = $(this).closest("tr");
+    nameHotel = fila.find('td:eq(0)').text();
+    direHotel = fila.find('td:eq(1)').text();
+    descHab = fila.find('td:eq(2)').text();
+    fechaReserva = fila.find('td:eq(3)').text();
+    fechaIngreso = fila.find('td:eq(4)').text();
+    fechaSalida = fila.find('td:eq(5)').text();
+    pago = parseInt(fila.find('td:eq(6)').text());
+
+    document.getElementById('nameHotel').readOnly = true;
+    document.getElementById('direHotel').readOnly = true;
+    document.getElementById('descHab').readOnly = true;
+    document.getElementById('fechaRes').readOnly = true;
+    document.getElementById('fechaIngreso').readOnly = true;
+    document.getElementById('fechaSalida').readOnly = true;
+    document.getElementById('pago').readOnly = true;
     
-    
-    var dataSet = [
-                   [ "Tiger Nixon", "System Architect", "Edinburgh", "5421", "2011/04/25", "$320,800" ],
-                   [ "Garrett Winters", "Accountant", "Tokyo", "8422", "2011/07/25", "$170,750" ],
-                   [ "Ashton Cox", "Junior Technical Author", "San Francisco", "1562", "2009/01/12", "$86,000" ],
-                   [ "Cedric Kelly", "Senior Javascript Developer", "Edinburgh", "6224", "2012/03/29", "$433,060" ],
-                   [ "Airi Satou", "Accountant", "Tokyo", "5407", "2008/11/28", "$162,700" ],
-                   [ "Brielle Williamson", "Integration Specialist", "New York", "4804", "2012/12/02", "$372,000" ],
-                   [ "Herrod Chandler", "Sales Assistant", "San Francisco", "9608", "2012/08/06", "$137,500" ],
-                   [ "Rhona Davidson", "Integration Specialist", "Tokyo", "6200", "2010/10/14", "$327,900" ],
-                   [ "Colleen Hurst", "Javascript Developer", "San Francisco", "2360", "2009/09/15", "$205,500" ],
-                   [ "Sonya Frost", "Software Engineer", "Edinburgh", "1667", "2008/12/13", "$103,600" ],
-                   [ "Jena Gaines", "Office Manager", "London", "3814", "2008/12/19", "$90,560" ],
-                   [ "Quinn Flynn", "Support Lead", "Edinburgh", "9497", "2013/03/03", "$342,000" ],
-                   [ "Charde Marshall", "Regional Director", "San Francisco", "6741", "2008/10/16", "$470,600" ],
-                   [ "Haley Kennedy", "Senior Marketing Designer", "London", "3597", "2012/12/18", "$313,500" ],
-                   [ "Tatyana Fitzpatrick", "Regional Director", "London", "1965", "2010/03/17", "$385,750" ],
-                   [ "Michael Silva", "Marketing Designer", "London", "1581", "2012/11/27", "$198,500" ],
-                   [ "Paul Byrd", "Chief Financial Officer (CFO)", "New York", "3059", "2010/06/09", "$725,000" ],
-                   [ "Gloria Little", "Systems Administrator", "New York", "1721", "2009/04/10", "$237,500" ],
-                   [ "Bradley Greer", "Software Engineer", "London", "2558", "2012/10/13", "$132,000" ],
-                   [ "Dai Rios", "Personnel Lead", "Edinburgh", "2290", "2012/09/26", "$217,500" ],
-                   [ "Jenette Caldwell", "Development Lead", "New York", "1937", "2011/09/03", "$345,000" ],
-                   [ "Yuri Berry", "Chief Marketing Officer (CMO)", "New York", "6154", "2009/06/25", "$675,000" ],
-                   [ "Caesar Vance", "Pre-Sales Support", "New York", "8330", "2011/12/12", "$106,450" ],
-                   [ "Doris Wilder", "Sales Assistant", "Sidney", "3023", "2010/09/20", "$85,600" ],
-                   [ "Angelica Ramos", "Chief Executive Officer (CEO)", "London", "5797", "2009/10/09", "$1,200,000" ],
-                   [ "Gavin Joyce", "Developer", "Edinburgh", "8822", "2010/12/22", "$92,575" ],
-                   [ "Jennifer Chang", "Regional Director", "Singapore", "9239", "2010/11/14", "$357,650" ],
-                   [ "Brenden Wagner", "Software Engineer", "San Francisco", "1314", "2011/06/07", "$206,850" ],
-                   [ "Fiona Green", "Chief Operating Officer (COO)", "San Francisco", "2947", "2010/03/11", "$850,000" ],
-                   [ "Shou Itou", "Regional Marketing", "Tokyo", "8899", "2011/08/14", "$163,000" ],
-                   [ "Michelle House", "Integration Specialist", "Sidney", "2769", "2011/06/02", "$95,400" ],
-                   [ "Suki Burks", "Developer", "London", "6832", "2009/10/22", "$114,500" ],
-                   [ "Prescott Bartlett", "Technical Author", "London", "3606", "2011/05/07", "$145,000" ],
-                   [ "Gavin Cortez", "Team Leader", "San Francisco", "2860", "2008/10/26", "$235,500" ],
-                   [ "Martena Mccray", "Post-Sales support", "Edinburgh", "8240", "2011/03/09", "$324,050" ],
-                   [ "Unity Butler", "Marketing Designer", "San Francisco", "5384", "2009/12/09", "$85,675" ]
-               ];
-                
-		    $('#dataTable').DataTable( {
-		    	"scrollX": true,
-		        data: dataSet,
-		        columns: [
-		            { title: "Name" },
-		            { title: "Position" },
-		            { title: "Office" },
-		            { title: "Extn." },
-		            { title: "Start date" },
-		            { title: "Salary" }
-		        ]
-		    } );
-		    
-		    
-} );
+    $("#nameHotel").val(nameHotel);
+    $("#direHotel").val(direHotel);
+    $("#descHab").val(descHab);
+    $("#fechaRes").val(fechaReserva);
+    $("#fechaIngreso").val(fechaIngreso);
+    $("#fechaSalida").val(fechaSalida);
+    $("#pago").val(pago);
+
+    $(".modal-header").css("background-color", "blue");
+    $(".modal-header").css("color", "white");
+    $(".modal-title").text("Nueva reserva");            
+    $("#modalCRUD").modal("show");
+});
+
+var fila;
+
+$(document).on("click", ".btnEliminar", function(){    
+    fila = $(this);
+    id = $(this).closest("tr").find('td:eq(0)').text();
+    opcion = 3
+    var respuesta = confirm("¿Está seguro de eliminar el registro: "+id+"?");
+    if(respuesta){
+        $.ajax({
+            url: "../../controller/reservaController.php?a=Delete",
+            type: "GET",
+            dataType: "json",
+            data: {opcion:opcion,id:id},
+            success: function(){
+                example.row(fila.parents('tr')).remove().draw();
+            }
+        });
+    } else{
+        return false;
+    }  
+});
+
+$("#formReservas").submit(function(e){
+    e.preventDefault();   
+    id = $.trim($("#id").val()); 
+    fechaReserva = $.trim($("#fechaReserva").val());
+    fechaIngreso = $.trim($("#fechaIngreso").val());
+    fechaSalida = $.trim($("#fechaSalida").val());    
+    precio = $.trim($("#precio").val());
+    $.ajax({
+        url: "../../controller/reservaController.php",
+        type: "POST",
+        dataType: "json",
+        data: {fechaReserva:fechaReserva, fechaIngreso:fechaIngreso, fechaSalida:fechaSalida, precio:precio, opcion:opcion},
+        success: function(data){  
+            var datos = JSON.parse(data);
+            id = data[0].id;            
+            fechaReserva = data[0].fechaReserva;
+            fechaIngreso = data[0].fechaIngreso;
+            fechaSalida = data[0].fechaSalida;  
+            precio = data[0].precio;     
+            if(opcion == 1){   
+            example.row.add([id,fechaReserva,fechaIngreso,fechaSalida,precio]).draw();     
+            }else{
+            example.row(fila).data([id,fechaReserva,fechaIngreso,fechaSalida,precio]).draw();
+            }
+        }     
+    });   
+    $("#modalCRUD").modal("hide");    
+}); 
+});

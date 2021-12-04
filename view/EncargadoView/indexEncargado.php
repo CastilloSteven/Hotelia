@@ -441,7 +441,7 @@ $ModeloEncargado->validateSession();
 								<div class="card-body ">
 									<div class="table-wrap">
 										<div class="table-responsive">
-											<table class="table display product-overview mb-30" id="support_table5">
+										<table class="table display product-overview mb-30" id="support_table5">
 												<thead>
 													<tr>
 														<th>No</th>
