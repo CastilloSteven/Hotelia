@@ -93,5 +93,28 @@ class Encargado extends Conexion{
             }
     }
 
+    public function Reporte($IdEnc,$Rango){
+        $rows=null;
+        $statement=$this->db->prepare('call proReporte (:IdEnc,:Rango);');
+        $statement->bindparam(':IdEnc',$IdEnc);
+        $statement->bindparam(':Rango',$Rango);
+        $statement->execute();
+        while ($result=$statement->fetch()) {
+            $rows[]=$result;
+        }
+        return $rows; 
+    }
+
+    public function ReservasHotel($IdEnc){
+        $rows=null;
+        $statement=$this->db->prepare('call proReservasHotel (:IdEnc);');
+        $statement->bindparam(':IdEnc',$IdEnc);
+        $statement->execute();
+        while ($result=$statement->fetch()) {
+            $rows[]=$result;
+        }
+        return $rows; 
+    }
+
 }
 ?>

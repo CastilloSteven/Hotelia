@@ -113,6 +113,9 @@ public function getIdHotel($IdEnc){
     return false;
 }
 
+
+
+
 }
 
 
